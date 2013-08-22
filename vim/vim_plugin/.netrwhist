@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/peiqzhen/Projects/DLPi/src/Sitara-CL/source/user/opensource/bridge-utils-1.5'
+let g:netrw_dirhist_2='/home/peiqzhen/Projects/DLPi/src/Sitara-CL/source/user/opensource/dnsmasq-2.40/man'
+let g:netrw_dirhist_3='/home/peiqzhen/Projects/Sitara-CL/build'
