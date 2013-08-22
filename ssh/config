@@ -1,0 +1,59 @@
+#########Build server##########
+
+Host "build1"
+
+HostName "sn-crdc-build1"
+
+User "peiqzhen"
+
+IdentityFile "~/.ssh/id_rsa_build1"
+
+#########CentOS 6.4##########
+
+Host "centos"
+
+HostName "64.104.161.199"
+
+User "peiqzhen"
+
+IdentityFile "~/.ssh/id_rsa_centos"
+
+#########Ubuntu-server-10.04##########
+
+Host "ubuntu"
+
+HostName "64.104.161.77"
+
+User "peiqzhen"
+
+IdentityFile "~/.ssh/id_rsa_ubuntu"
+
+#########CHS file server##########
+
+Host "fileserver"
+
+HostName "10.74.122.100"
+
+User "peiqzhen"
+
+IdentityFile "~/.ssh/id_rsa_fileserver"
+
+#########Mac Pro##########
+
+Host "mac"
+
+HostName "10.140.38.15"
+
+User "peiqzhen"
+
+IdentityFile "~/.ssh/id_rsa_mac"
+
+#########GitHub##########
+Host github.com  # must be "github.com", otherwise you will get the error like "Permission denied (public)"
+
+HostName github.com
+
+User git
+
+IdentityFile "/home/peiqzhen/.ssh/id_rsa_github"
+
