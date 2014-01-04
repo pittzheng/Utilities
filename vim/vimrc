@@ -111,6 +111,13 @@ nnoremap <C-d> <C-w>l
 nmap <F3> :NERDTreeToggle <CR>
 "nmap <F2> :NERDTreeClose <CR>
 nmap <F4> :Tlist<CR>
+
+" key map for adjustmenting vertical and horizontal position of window
+nmap <silent><LEADER>+ :resize +1<CR>
+nmap <silent><LEADER>_ :resize -1<CR>
+nmap <silent><LEADER>= :vertical resize +5<CR>
+nmap <silent><LEADER>- :vertical resize -5<CR>
+
 " matchit
 let b:match_words='BEGIN:END'
 "Set mapleader
@@ -302,8 +309,8 @@ endif
 
 set autoindent
 set cindent
-"colorscheme default
-colorscheme xterm16
+"ncolorscheme default
+"colorscheme xterm16
 "colorscheme grb256
 "colorscheme Guardian
 "colorscheme codeschool
@@ -312,4 +319,9 @@ colorscheme xterm16
 "colorscheme candy
 "colorscheme twilight
 "colorscheme vividchalk
+" good color scheme
+"colorscheme graywh
+"colorscheme clue
+"colorscheme colorer
+colorscheme emacs
 
