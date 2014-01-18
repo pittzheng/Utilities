@@ -1,0 +1,60 @@
+#Method 1 of PS1
+#STARTFGCOLOR='\e[0;35m';
+#STARTBGCOLOR="\e[47m"
+#ENDCOLOR="\e[0m"
+#export PS1="$STARTFGCOLOR[\t-\u@\h \w]$ENDCOLOR\$"
+
+#Method 2 of PS1
+#export PS1="[\t-\u@\h \W]\$"
+
+#Method 3 of PS1
+#export PS1="[\u@\h \W[\$(date +%k:%m:%S)]]\$"
+
+#Method 4 of PS1
+#Black='\e[0;30m';
+#Blue='\e[0;34m';
+#Green='\e[0;32m';
+#Cyan='\e[0;36m';
+#Red='\e[0;31m';
+#Purple='\e[0;35m';
+#Brown='\e[0;33m';
+#ENDCOLOR="\e[0m"
+#export PS1="$Red[$Green\t-$Purple\u@$Cyan\h $Brown\W$Red]$ENDCOLOR\$ "
+#export PS1="$Red[\t-$Blue\u@\h \W]\$ "
+
+#Method 5 of PS1
+function prompt {
+    local BLACK="\[\033[0;30m\]"
+    local BLUE="\[\033[0;34m\]"
+    local GREEN="\[\033[0;32m\]"
+    local CYAN="\[\033[0;36m\]"
+    local RED="\[\033[0;31m\]"
+    local PURPLE="\[\033[0;35m\]"
+    local BROWN="\[\033[0;33m\]"
+    local DARK_BLUE="\[\033[1;34m\]"
+    local DARK_RED="\[\033[1;31m\]"
+    local NO_COLOR="\[\033[0m\]"
+    PS1="$RED[$GREEN\t$CYAN-$PURPLE\u$GREEN@$DARK_BLUE\h $BROWN\W$RED]$NO_COLOR\$ "
+}
+
+prompt 
+
+#export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
+
+alias gi='/home/peiqzhen/personal_bin/git-info.sh'
+export PATH=$PATH:/home/peiqzhen/personal_bin
+export GIT_EDITOR=vim
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+#export CDPATH=.:~:/etc:/var
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+alias h1='history 10'
+alias h2='history 20'
+alias h3='history 30'
+function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+shopt -s cdspell
+
