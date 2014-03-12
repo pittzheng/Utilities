@@ -20,9 +20,9 @@ IdentityFile "~/.ssh/id_rsa_centos"
 
 #########Ubuntu-server-10.04##########
 
-Host "ubuntu"
+Host "Ubuntu-10"
 
-HostName "64.104.161.77"
+HostName "64.104.161.92"
 
 User "peiqzhen"
 
@@ -57,3 +57,9 @@ User git
 
 IdentityFile "/home/peiqzhen/.ssh/id_rsa_github"
 
+#########DLC Box#########
+Host dlpp
+
+HostName 10.74.122.197
+
+User dlpp
