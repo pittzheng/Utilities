@@ -42,7 +42,7 @@ prompt
 #export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
 
 alias gi='/home/peiqzhen/personal_bin/git-info.sh'
-export PATH=$PATH:/home/peiqzhen/personal_bin
+export PATH=$PATH:/home/peiqzhen/personal_bin:/home/peiqzhen/personal_bin/mtd-utils/host_install/sbin
 export GIT_EDITOR=vim
 export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
@@ -57,4 +57,6 @@ alias h2='history 20'
 alias h3='history 30'
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 shopt -s cdspell
+bind "set completion-ignore-case on"
 
+[ -z "$TMUX" ] && export TERM=xterm-256color
