@@ -2,7 +2,7 @@
 
 DIR=/home/peiqzhen/Projects/Learning_Code/github/Utilities
 
-ln -sf ${DIR}/scripts/ackrc ${HOME}/ackrc
+ln -sf ${DIR}/scripts/ackrc ${HOME}/.ackrc
 ln -sf ${DIR}/scripts/bash_rocky ${HOME}/.bash_rocky
 ln -sf ${DIR}/scripts/git-config.sh ${HOME}/personal_bin/git-config.sh
 ln -sf ${DIR}/scripts/git-info.sh ${HOME}/personal_bin/git-info.sh
