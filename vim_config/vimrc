@@ -132,7 +132,7 @@ vmap <F6> :w! /tmp/copy_buf <CR>
 nmap <F7> :r /tmp/copy_buf <CR>
 nmap <F6> :.,+0 w! /tmp/copy_buf <CR>
 "nmap <F8> :cs kill 0 <CR>:cs add $CSCOPE_DB <CR>
-nmap <F8> :cs add $CSCOPE_DB <CR>
+"nmap <F8> :cs add $CSCOPE_DB <CR>
 autocmd BufNewFile *.[ch] 
                     \  exec append(0,"// ====== includes ======") 
                     \| exec append(1,"") 
@@ -242,7 +242,7 @@ endif
 
 """""""""""""""""neocomplcache.vim settings"""""""""""""""""
 " Disable AutoComplPop. 
-let g:acp_enableAtStartup = 0 
+let g:acp_enableAtStartup = 0
 " Use neocomplcache. 
 let g:neocomplcache_enable_at_startup = 1 
 " Use smartcase. 
@@ -284,16 +284,17 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup() 
 
 " AutoComplPop like behavior. 
-"let g:neocomplcache_enable_auto_select = 1 
+" let g:neocomplcache_enable_auto_select = 1 
 
 " Shell like behavior(not recommended). 
-"set completeopt+=longest 
-"let g:neocomplcache_enable_auto_select = 1 
-"let g:neocomplcache_disable_auto_complete = 1 
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>" 
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" set completeopt+=longest 
+" let g:neocomplcache_enable_auto_select = 1 
+" let g:neocomplcache_disable_auto_complete = 1 
+" inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>" 
+" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " In many terminal emulators the mouse works just fine, thus enable it.
 """""""""""""""""neocomplcache.vim settings end"""""""""""""""""
+
 "lookupfile plugin settings
 let g:LookupFile_TagExpr = '"./filenametags"'
 
@@ -309,7 +310,7 @@ endif
 
 set autoindent
 set cindent
-"ncolorscheme default
+colorscheme default
 "colorscheme xterm16
 "colorscheme grb256
 "colorscheme Guardian
@@ -323,5 +324,27 @@ set cindent
 "colorscheme graywh
 "colorscheme clue
 "colorscheme colorer
-colorscheme emacs
+"colorscheme emacs
+colorscheme tibet
+"colorscheme default_modified
+"colorscheme desert_thl
 
+"eclim setup
+let g:EclimCompletionMethod = 'omnifunc'
+"tagbar shorcut key, reference tagbar.txt under .vim/doc
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_left = 1
+let g:tagbar_sort = 0
+let g:tagbar_singleclick = 1
+"JavaBrowser
+nmap <F9> :JavaBrowser<CR>
+"Powerline
+set laststatus=2
+" Syntastic, On by default, turn it off for html
+" syntastic
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1

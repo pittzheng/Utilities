@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/peiqzhen/Projects/CL_bare_JAN_14_2014/source/user/fmc/tecom/private/wlan_mgr'
 let g:netrw_dirhist_2='/home/peiqzhen/Projects/CL_bare_JAN_14_2014/source/user/fmc/cisco/private/tzset'
+let g:netrw_dirhist_3='/home/peiqzhen/Projects/beagleboards_linux_distribution/examples/github/i2c_beaglebone'
+let g:netrw_dirhist_4='/home/peiqzhen'
+let g:netrw_dirhist_5='/home/peiqzhen/Projects/CL_bare_MAR_06/source/user/opensource/logrotate-3.8.5'
+let g:netrw_dirhist_6='/home/peiqzhen/Projects/Connected-Life/build'
+let g:netrw_dirhist_7='/home/peiqzhen/Projects/Connected-Life-Dev/source/user/fmc/tecom/private/radio_mgr'
+let g:netrw_dirhist_8='/home/peiqzhen/.ssh'
+let g:netrw_dirhist_9='/home/peiqzhen/java_test/src'
