@@ -38,6 +38,8 @@
 "    Rocky Zheng  Sep/04/2014      1.0.0.24     Plugin syntastic setup
 "    Rocky Zheng  Sep/04/2014      1.0.0.25     Plugin TxtBrowser setup
 "    Rocky Zheng  Sep/04/2014      1.0.0.26     Plugin ultisnips and vim-snippets setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.27     Plugin eclim setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.28     Plugin CCTree setup
 "
 
 "******************************************************************************************************************
@@ -334,5 +336,12 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-"eclim setup
+"#Revision 1.0.0.27
 let g:EclimCompletionMethod = 'omnifunc'
+
+"#Revision 1.0.0.28
+let g:CCTreeCscopeDb = "cscope.out"
+let g:CCTreeRecursiveDepth = 3
+let g:CCTreeMinVisibleDepth = 3
+let g:CCTreeOrientation = "leftabove"
+let g:CCTreeWindowVertical = 1
