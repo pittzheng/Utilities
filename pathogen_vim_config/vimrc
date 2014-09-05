@@ -320,11 +320,11 @@ colorscheme default_modified
 "colorscheme desert_thl
 
 "#Revision 1.0.0.24
-"let g:syntastic_auto_loc_list=1
-"let g:syntastic_disabled_filetypes=['html']
-"let g:syntastic_enable_signs=1
-"let g:syntastic_check_on_open=0
-"let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
 
 "#Revision 1.0.0.25
 au BufEnter *.txt setlocal ft=txt formatoptions=roql
