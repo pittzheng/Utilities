@@ -1,0 +1,13 @@
+	Yellow:226
+	DarkGreen:22
+CT256
+	Blue:21
+	Red:9
+	DarkBlue:18
+	#880000:88
+	Yellow:226
+	DarkGreen:22
+	DarkBlue:18
+	#880000:88
+	Blue:21
+	Red:9
