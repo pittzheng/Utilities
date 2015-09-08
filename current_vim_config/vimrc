@@ -1,0 +1,366 @@
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2008 Jul 02
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"  for MS-DOS and Win32:  $VIM\_vimrc
+"	    for OpenVMS:  sys$login:.vimrc
+"******************************************************************************************************************
+"     Modifier       Date          Revision              Description
+"    -----------  -----------     ---------     -----------------------------------------------------
+"    Rocky Zheng  Sep/04/2014      1.0.0.0      expandtab to several(default 8) spaces
+"    Rocky Zheng  Sep/04/2014      1.0.0.1      set nobackup, autoindent, cindent
+"    Rocky Zheng  Sep/04/2014      1.0.0.2      set tabstop,shiftwidth,softabstop
+"    Rocky Zheng  Sep/04/2014      1.0.0.3      show line number 
+"    Rocky Zheng  Sep/04/2014      1.0.0.4      set ignorecase,smartcase,nowrapscan when searching
+"    Rocky Zheng  Sep/04/2014      1.0.0.5      disbale 注释自动换行
+"    Rocky Zheng  Sep/04/2014      1.0.0.6      add statusline
+"    Rocky Zheng  Sep/04/2014      1.0.0.7      copy and paste one line using <F6> and <F7>
+"    Rocky Zheng  Sep/04/2014      1.0.0.8      copy and paste multiple lines in visual mode
+"    Rocky Zheng  Sep/04/2014      1.0.0.9      add auto generated lines for .[ch] file when creating
+"    Rocky Zheng  Sep/04/2014      1.0.0.10     install pathogen plugin for managing all of other plugins
+"    Rocky Zheng  Sep/04/2014      1.0.0.11     load cscope database file automatically
+"    Rocky Zheng  Sep/04/2014      1.0.0.12     Plugin taglist setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.13     Plugin winmanager setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.14     shortcuts for switch window
+"    Rocky Zheng  Sep/04/2014      1.0.0.15     Plugin grep setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.16     Plugin Nerdtree setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.17     shortcuts for adjustmenting vertical/horizontal position of window
+"    Rocky Zheng  Sep/04/2014      1.0.0.18     Plugin EnhancedCommentify setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.19     Plugin YouCompleteMe setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.20     Plugin LookupFile setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.21     Plugin Tagbar setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.22     folder close and folder open
+"    Rocky Zheng  Sep/04/2014      1.0.0.23     color scheme
+"    Rocky Zheng  Sep/04/2014      1.0.0.24     Plugin syntastic setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.25     Plugin TxtBrowser setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.26     Plugin ultisnips and vim-snippets setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.27     Plugin eclim setup
+"    Rocky Zheng  Sep/04/2014      1.0.0.28     Plugin CCTree setup
+"
+
+"******************************************************************************************************************
+"
+
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file
+endif
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+"********************************************Customer vimrc*********************************************************"
+"#Revision 1.0.0.0
+set expandtab
+
+"#Revision 1.0.0.1
+set nobackup
+set autoindent
+set cindent
+
+"#Revision 1.0.0.2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+"#Revision 1.0.0.3
+set nu
+
+"#Revision 1.0.0.4
+set ignorecase
+"set smartcase
+"set nowrapscan
+
+"#Revision 1.0.0.6
+set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
+"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%d/%m/%Y-%H:%M\:%S\")}%=\ col:%c%V\ ascii:%b\ pos:%o\ lin:%l\,%L\ %P
+set laststatus=2
+
+"#Revision 1.0.0.7
+nmap <F6> :.,+0 w! /tmp/copy_buf <CR>
+nmap <F7> :r /tmp/copy_buf <CR>
+
+"#Revision 1.0.0.8 
+vmap <F6> :w! /tmp/copy_buf <CR>
+
+"#Revision 1.0.0.10
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+"#autoload plugin's help doc
+call pathogen#helptags()
+
+"#Revision 1.0.0.9
+if has("autocmd")
+  autocmd BufNewFile,BufRead * setlocal formatoptions=roql
+  autocmd BufNewFile *.[ch] 
+                    \  exec append(0,"// ====== includes ======") 
+                    \| exec append(1,"") 
+                    \| exec append(2,"")
+                    \| exec append(3, "\/\/ ====== defines ======") 
+                    \| exec append(4,"")
+                    \| exec append(5,"")
+                    \| exec append(6, "\/\/ ====== enums ======") 
+                    \| exec append(7,"")
+                    \| exec append(8,"")
+                    \| exec append(9, "\/\/ ====== typedefs ======") 
+                    \| exec append(10,"")
+                    \| exec append(11,"")
+                    \| exec append(12, "\/\/ ====== globals ======") 
+                    \| exec append(13,"")
+                    \| exec append(14,"")
+                    \| exec append(15, "\/\/ ====== statics ======") 
+                    \| exec append(16,"")
+                    \| exec append(17,"")
+                    \| exec append(18, "\/\/ ====== prototypes ======") 
+                    \| exec ':$'
+endif " has("autocmd")
+
+
+
+"#Revision 1.0.0.11
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+"#Revision 1.0.0.12
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+"let Tlist_Use_Horiz_Window=1
+let Tlist_Use_Right_Window=0
+let Tlist_Use_SingleClick=1
+"nmap <F4> :Tlist<CR>
+nmap <F4> :Tagbar<CR>
+
+"#Revision 1.0.0.13
+"let g:winManagerWindowLayout='TagList|FileExplorer,BufExplorer'
+let g:winManagerWindowLayout='TagList,FileExplorer,BufExplorer'
+nmap wm :WMToggle<cr>
+
+"#Revision 1.0.0.14
+nnoremap <C-w> <C-w>k
+nnoremap <C-x> <C-w>j
+nnoremap <C-a> <C-w>h
+nnoremap <C-d> <C-w>l
+
+"#Revision 1.0.0.15
+"nnoremap <silent> <F2> :Rgrep<CR>
+
+"#Revision 1.0.0.16
+let NERDTreeWinPos=1
+let NERDTreeMouseMode=2
+nmap <F3> :NERDTreeToggle <CR>
+
+"#Revision 1.0.0.17
+nmap <silent><LEADER>+ :resize +1<CR>
+nmap <silent><LEADER>_ :resize -1<CR>
+nmap <silent><LEADER>= :vertical resize +5<CR>
+nmap <silent><LEADER>- :vertical resize -5<CR>
+
+"#Revision 1.0.0.18
+"#Set mapleader
+let mapleader=","
+let g:mapleader=","
+"#Comment
+nmap <silent> <F5> ,x
+vmap <silent> <F5> ,x
+imap <silent> <F5> ,x
+
+"#Revision 1.0.0.19
+"let g:ycm_global_ycm_extra_conf = '/home/peiqzhen/Projects/Connected-Life/source/user/fmc/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/peiqzhen/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+"#这个选项关闭会有预览窗口
+"set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+"#youcompleteme  默认tab  s-tab 和自动补全冲突
+"#let g:ycm_key_list_select_completion=['<c-n>']
+"#这个选项是 UltiSnips块补全的关键, tag键补全
+let g:ycm_key_list_select_completion = ['<Down>']
+"#let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+
+let g:ycm_collect_identifiers_from_tags_files=1    " 开启 YCM 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2    "从第2个键入字符就开始罗列匹配项
+"#屏蔽这句可以防止eclimd和youcompleteme的冲突
+"let g:ycm_cache_omnifunc=0 " 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1   " 语法关键字补全
+"#force recomile with syntastic
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"inoremap <leader><leader> <C-x><C-o>
+"#在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"#在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+"#注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+"#switch off the syntax checker in YouCompleteMe
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_error_symbol = 'x'
+let g:ycm_warning_symbol = '!'
+"
+let g:ycm_register_as_syntastic_checker = 1 "default 1
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+"let g:syntastic_enable_highlighting = 1
+let g:ycm_always_populate_location_list = 1 "default 0
+let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+
+"#跳转到定义处
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> 
+
+"#Revision 1.0.0.20
+let g:LookupFile_TagExpr = '"./filenametags"'
+
+"#Revision 1.0.0.21
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_left = 1
+let g:tagbar_sort = 0
+let g:tagbar_singleclick = 1
+
+"#Revision 1.0.0.22
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+"#Revision 1.0.0.23
+"colorscheme default
+"colorscheme xterm16
+"colorscheme grb256
+"colorscheme Guardian
+"colorscheme codeschool
+"colorscheme github
+"colorscheme jellybeans
+"colorscheme candy
+"colorscheme twilight
+"colorscheme vividchalk
+" good color scheme
+"colorscheme graywh
+"colorscheme clue
+"colorscheme colorer
+"colorscheme emacs
+"colorscheme tibet
+colorscheme default_modified
+"colorscheme bandit
+"colorscheme desert_thl
+
+"#Revision 1.0.0.24
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_enable_balloons = 1
+
+"#Revision 1.0.0.25
+au BufEnter *.txt setlocal ft=txt formatoptions=roql
+
+"#Revision 1.0.0.26
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"#Revision 1.0.0.27
+let g:EclimCompletionMethod = 'omnifunc'
+
+"#Revision 1.0.0.28
+let g:CCTreeCscopeDb = "cscope.out"
+let g:CCTreeRecursiveDepth = 3
+let g:CCTreeMinVisibleDepth = 3
+let g:CCTreeOrientation = "leftabove"
+let g:CCTreeWindowVertical = 1
+"#try :h hi
+hi Search cterm=NONE ctermfg=Red ctermbg=Green
+
