@@ -41,12 +41,18 @@ prompt
 
 #export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
 
-alias gi='/home/peiqzhen/personal_bin/git-info.sh'
-export PATH=$PATH:/home/peiqzhen/personal_bin:/home/peiqzhen/personal_bin/mtd-utils/host_install/sbin
+alias gi='/opt/bin/git-info.sh'
+#export PATH=$PATH:/home/peiqzhen/personal_bin:/home/peiqzhen/personal_bin/mtd-utils/host_install/sbin:/home/peiqzhen/Downloads/cov-analysis-linux-7.0.0/bin:/home/peiqzhen/personal_bin/protobuf/bin
+export PATH=$PATH:/opt/tmux-1.8/bin
 export GIT_EDITOR=vim
-export LC_ALL="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 #export CDPATH=.:~:/etc:/var
+export JAVA_HOME=/opt/jdk1.7.0_67
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
 alias ..="cd .."
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
@@ -55,7 +61,11 @@ alias ..5="cd ../../../../.."
 alias h1='history 10'
 alias h2='history 20'
 alias h3='history 30'
+alias igrep='grep -E -n -i -r --color'
+
+function totalline () { wc -l `find ./ -regex '.*\.[ch]'`; }
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+git-grep-latest(){ result_path=$(git log --diff-filter=D --summary | grep $1 | head -1 | awk '{print $4;}'); latest_commit=$(git log --all -- $result_path | head -1 | awk '{print $2;}'); git show $latest_commit -- $result_path; }
 shopt -s cdspell
 bind "set completion-ignore-case on"
 
