@@ -43,7 +43,7 @@ prompt
 
 alias gi='/opt/bin/git-info.sh'
 #export PATH=$PATH:/home/peiqzhen/personal_bin:/home/peiqzhen/personal_bin/mtd-utils/host_install/sbin:/home/peiqzhen/Downloads/cov-analysis-linux-7.0.0/bin:/home/peiqzhen/personal_bin/protobuf/bin
-export PATH=$PATH:/opt/tmux-1.8/bin
+export PATH=$PATH:/opt/bin
 export GIT_EDITOR=vim
 #export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
